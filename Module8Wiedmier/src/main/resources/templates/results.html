@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head> 
+<meta charset="ISO-8859-1">
+<title>View All Contacts</title> 
+</head> 
+<body> 
+<form> 
+<table> 
+<tr th:each="currentToaster : ${toasters}" > 
+<td th:text="${currentToaster.id}" /> 
+<td th:text="${currentToaster.name}" /> 
+<td th:text="${currentToaster.model}" /> 
+<td th:text="${currentToaster.year}" /> 
+<td th:text="${currentToaster.slots}" /> 
+<td><a th:href="@{/edit/{id}(id=${currentToaster.id})}">Edit</a></td>
+<td><a th:href="@{/delete/{id}(id=${currentToaster.id})}">Delete</a></td>
+</tr> 
+</table> 
+</form> 
+<a href="../inputToaster">Add a new toaster</a> 
+</body> 
+</html>

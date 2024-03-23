@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head> 
+<meta charset="ISO-8859-1"> 
+<title>Insert Toaster Information</title> 
+</head> 
+<body> 
+	<form th:object="${newToaster}" th:action="@{/update/{id}(id=${newToaster.getId})}" method=POST>
+		Name: <input name="name" size="20"th:field="*{name}"> <br /> 
+		Model: <input name="model" size="10" th:field="*{model}"><br /> 
+		Year: <input name="year" size="20" th:field="*{year}"><br /> 
+		Slots: <input name="slots" size="20" th:field="*{slots}"><br />
+		<input name="submit" type="submit" value="submit" /> 
+	</form> 
+	<a href="viewAll">View all Toasters</a> 
+</body> 
+</html>

@@ -16,7 +16,7 @@ import dmacc.controller.BeanConfiguration;
 import dmacc.repository.ToasterRepository;
 
 @SpringBootApplication
-public class Module8WiedmierApplication implements CommandLineRunner{
+public class Module8WiedmierApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(Module8WiedmierApplication.class, args);
@@ -25,24 +25,24 @@ public class Module8WiedmierApplication implements CommandLineRunner{
 //		System.out.println(t.toString());
 	}
 	
-	@Autowired
-	ToasterRepository repo;
-	
-	@Override
-	public void run(String... args) throws Exception{
-		// TODO Auto-generated method stub 
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class); 
-		//Using an existing bean 
-		Toaster t = appContext.getBean("toaster", Toaster.class); 
-		t.setModel("ABC-123"); 
-		repo.save(t); 
-		//Creating a bean to use – not managed by Spring 
-		Toaster to = new Toaster("Amazing Toaster", "ABC-800", 2024, 2); 
-		repo.save(to); 
-		List<Toaster> allMyToasters = repo.findAll(); 
-		for(Toaster appliance: allMyToasters) { 
-		System.out.println(appliance.toString());  
-		} 
-		((AbstractApplicationContext) appContext).close();
-	}
+//	@Autowired
+//	ToasterRepository repo;
+//	
+//	@Override
+//	public void run(String... args) throws Exception{
+//		// TODO Auto-generated method stub 
+//		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class); 
+//		//Using an existing bean 
+//		Toaster t = appContext.getBean("toaster", Toaster.class); 
+//		t.setModel("ABC-123"); 
+//		repo.save(t); 
+//		//Creating a bean to use – not managed by Spring 
+//		Toaster to = new Toaster("Amazing Toaster", "ABC-800", 2024, 2); 
+//		repo.save(to); 
+//		List<Toaster> allMyToasters = repo.findAll(); 
+//		for(Toaster appliance: allMyToasters) { 
+//		System.out.println(appliance.toString());  
+//		} 
+//		((AbstractApplicationContext) appContext).close();
+//	}
 }
