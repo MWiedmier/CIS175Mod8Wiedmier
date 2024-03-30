@@ -4,7 +4,35 @@
 <title>Insert Toaster Information</title> 
 </head> 
 <body> 
-	<form th:object="${newToaster}" th:action="@{/update/{id}(id=${newToaster.getId})}" method=POST>
+	<script type="text/javascript">
+		function checkForm(formToCheck){
+			//Validate year int
+			if(!parseInt(formToCheck.year.value)){
+				alert("Error: Year must be a number.");
+				formToCheck.year.focus();
+				return false;
+			}
+			
+			//Validate slots int
+			if(!parseInt(formToCheck.slots.value)){
+				alert("Error: Number of slots must be a number.");
+				formToCheck.slots.focus();
+				return false;
+			}
+			
+			//Check if name and model are the same
+			if(formToCheck.name.value.toUpperCase() == formToCheck.model.value.toUpperCase()){
+				alert("Error: Name and Model must be different.");
+				formToCheck.name.focus();
+				formToCheck.model.focus();
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+
+	<form name="toasterForm" onsubmit="return checkForm(this);" th:object="${newToaster}" th:action="@{/update/{id}(id=${newToaster.getId})}" method=POST>
 		Name: <input name="name" size="20"th:field="*{name}"> <br /> 
 		Model: <input name="model" size="10" th:field="*{model}"><br /> 
 		Year: <input name="year" size="20" th:field="*{year}"><br /> 
